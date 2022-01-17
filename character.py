@@ -42,9 +42,9 @@ class Character():
         
     def addItem(self, item):
         found = False
-        for slot in range(len(inventory)):
-            if inventory[slot] != "empty":
-                inventory[slot] = item
+        for slot in range(len(self.inventory)):
+            if self.inventory[slot] != "empty":
+                self.inventory[slot] = item
                 found = True
                 return(True)
         if found == False:

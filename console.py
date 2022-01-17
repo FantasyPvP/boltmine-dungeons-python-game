@@ -2,24 +2,31 @@ class Console():
     def __init__(self):
         return
 
-    def output_(self, message, messageType, colour):
-        if messageType == "error":
-            print(f"\u001b[31merror:\n╰─> {message}\u001b[0m")
-
-        elif messageType == "status":
-            print(f"\u001b[33mstatus:\n╰─> {message}\u001b[0m")
-
-        elif messageType == "colour":
-            string = self.format_(message, colour)
-            print(string)
-        else:
-            print("output type doesnt exist")
-        return
-
-    def input_(self, message, messageType, colour):
+    def input_(self, message, colour):
+        message = message + "\n╰─> "
         string = self.format_(message, colour)
         msgIn = input(string)
         return(msgIn)
+
+    def output_(self, message, colour):
+        string = self.format_(message, colour)
+        print("\n" + string)
+        return(True)
+
+    def status_(self, message, messageType):
+        if messageType == "status":
+            print(f"\n\u001b[33mStatus:\n╰─> {message}\u001b[0m")
+        elif messageType == "warning":
+            print(f"\n\u001b[33mWarning:\n╰─> {message}\u001b[0m")
+        else:
+            print("status doesnt exist")
+
+    def error_(self, message, errorType):
+        if errorType == "normal":
+            print(f"\n\u001b[31mError:\n╰─> {message}\u001b[0m")
+        elif errorType == "critical":
+            print(f"\n\u001b[31;1mCritical Error:\n╰─> {message}\u001b[0m")
+
 
     def format_(self, message, colour):
         if colour == "black":
